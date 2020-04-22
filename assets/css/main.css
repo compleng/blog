@@ -894,12 +894,12 @@ table tfoot td {
 
 ::-moz-selection {
   background: rgba(38, 57, 89, 0.8);
-  color: #ffffff;
+  color: #f5f5f5;
 }
 
 ::selection {
   background: rgba(38, 57, 89, 0.8);
-  color: #ffffff;
+  color: #f5f5f5;
 }
 
 .clearfix::before, .clearfix::after {
