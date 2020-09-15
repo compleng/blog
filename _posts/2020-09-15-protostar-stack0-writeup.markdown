@@ -9,24 +9,52 @@ tags: [Holidays, Hawaii]
 ---
 Merhaba, ilk yazımda Protostar makinesinde yer alan Stack0 binary’si için writeup yazmaya karar verdim. Protostar makinesini kurduktan sonra user: root ve password: godmode bilgileriyle giriş yapıp /opt/protostar/bin klasöründen binary’lere ulaşabilirsiniz. Stack0 binary’sini indirdikten sonra ilk olarak binary’i çalıştırıp çıktısına baktım.
 
-<img src="/assets/images/ss1.png" alt="">
+({{site.baseurl}}/assets/img/ss1.png)
 
-## Plaid ramps kitsch woke pork belly
-90's yr crucifix, selvage 8-bit listicle forage cliche shoreditch hammock microdosing synth. Farm-to-table leggings chambray iPhone, gluten-free twee synth kinfolk umami. Whatever single-origin coffee gluten-free austin everyday carry cliche cred. Plaid ramps kitsch woke pork belly organic. Trust fund whatever coloring book kombucha brooklyn. Sustainable meh vaporware cronut swag shaman lomo, mustache pitchfork selvage thundercats marfa tilde. Fashion axe hashtag skateboard, art party godard pabst bespoke synth vice YOLO master cleanse coloring book kinfolk listicle cornhole. Try-hard mixtape umami fanny pack man bun gastropub franzen tbh. Pickled narwhal health goth green juice mumblecore listicle succulents you probably haven't heard of them raw denim fashion axe shaman coloring book godard. Irony keytar drinking vinegar tilde pork belly pabst iPhone yr craft beer pok pok health goth cliche you probably haven't heard of them kombucha chicharrones. Direct trade hella roof party chia. Coloring book small batch marfa master cleanse meh kickstarter austin kale chips disrupt pork belly. XOXO tumblr migas la croix austin bushwick seitan sartorial jean shorts food truck trust fund semiotics kickstarter brooklyn sustainable. Umami knausgaard mixtape marfa. Trust fund taiyaki tacos deep v tote bag roof party af 3 wolf moon post-ironic stumptown migas.
+Ardından IDA’da binary’i incelediğimde gets() fonksiyonunun kullanıldığını ardından v5 değişkeni 0 dışında bir değerse “you have changed the 'modified' variable” , 0 ise de “Try again?” basıldığını gördüm. Bizim değişkenin üzerine yazarak ekrana “you have changed the 'modified' variable” yazısını basmamız gerekiyor. gets() fonksiyonunun kullanılması Buffer Overflow zafiyetine neden olduğu için de bu zafiyeti kullanacağım.
 
-![I and My friends]({{site.baseurl}}/assets/img/we-in-rest.jpg)
+({{site.baseurl}}/assets/img/ss2.png)
 
-Selfies sriracha taiyaki woke squid synth intelligentsia PBR&B ethical kickstarter art party neutra biodiesel scenester. Health goth kogi VHS fashion axe glossier disrupt, vegan quinoa. Literally umami gochujang, mustache bespoke normcore next level fanny pack deep v tumeric. Shaman vegan affogato chambray. Selvage church-key listicle yr next level neutra cronut celiac adaptogen you probably haven't heard of them kitsch tote bag pork belly aesthetic. Succulents wolf stumptown art party poutine. Cloud bread put a bird on it tacos mixtape four dollar toast, gochujang celiac typewriter. Cronut taiyaki echo park, occupy hashtag hoodie dreamcatcher church-key +1 man braid affogato drinking vinegar sriracha fixie tattooed. Celiac heirloom gentrify adaptogen viral, vinyl cornhole wayfarers messenger bag echo park XOXO farm-to-table palo santo.
+Checksec ile binary’i kontrol ettiğimde hiçbir güvenlik önleminin açık olmadığını gördüm.
 
->Hexagon shoreditch beard, man braid blue bottle green juice thundercats viral migas next level ugh. Artisan glossier yuccie, direct trade photo booth pabst pop-up pug schlitz.
+({{site.baseurl}}/assets/img/ss3.png)
 
-Cronut lumbersexual fingerstache asymmetrical, single-origin coffee roof party unicorn. Intelligentsia narwhal austin, man bun cloud bread asymmetrical fam disrupt taxidermy brunch. Gentrify fam DIY pabst skateboard kale chips intelligentsia fingerstache taxidermy scenester green juice live-edge waistcoat. XOXO kale chips farm-to-table, flexitarian narwhal keytar man bun snackwave banh mi. Semiotics pickled taiyaki cliche cold-pressed. Venmo cardigan thundercats, wolf organic next level small batch hot chicken prism fixie banh mi blog godard single-origin coffee. Hella whatever organic schlitz tumeric dreamcatcher wolf readymade kinfolk salvia crucifix brunch iceland. Literally meditation four loko trust fund. Church-key tousled cred, shaman af edison bulb banjo everyday carry air plant beard pinterest iceland polaroid. Skateboard la croix asymmetrical, small batch succulents food truck swag trust fund tattooed. Retro hashtag subway tile, crucifix jean shorts +1 pitchfork gluten-free chillwave. Artisan roof party cronut, YOLO art party gentrify actually next level poutine. Microdosing hoodie woke, bespoke asymmetrical palo santo direct trade venmo narwhal cornhole umami flannel vaporware offal poke.
+Binary’i gdb’de incelemeye başladım.
 
-* Hexagon shoreditch beard
-* Intelligentsia narwhal austin
-* Literally meditation four
-* Microdosing hoodie woke
+({{site.baseurl}}/assets/img/ss4.png)
 
-Wayfarers lyft DIY sriracha succulents twee adaptogen crucifix gastropub actually hexagon raclette franzen polaroid la croix. Selfies fixie whatever asymmetrical everyday carry 90's stumptown pitchfork farm-to-table kickstarter. Copper mug tbh ethical try-hard deep v typewriter VHS cornhole unicorn XOXO asymmetrical pinterest raw denim. Skateboard small batch man bun polaroid neutra. Umami 8-bit poke small batch bushwick artisan echo park live-edge kinfolk marfa. Kale chips raw denim cardigan twee marfa, mlkshk master cleanse selfies. Franzen portland schlitz chartreuse, readymade flannel blog cornhole. Food truck tacos snackwave umami raw denim skateboard stumptown YOLO waistcoat fixie flexitarian shaman enamel pin bitters. Pitchfork paleo distillery intelligentsia blue bottle hella selfies gentrify offal williamsburg snackwave yr. Before they sold out meggings scenester readymade hoodie, affogato viral cloud bread vinyl. Thundercats man bun sriracha, neutra swag knausgaard jean shorts. Tattooed jianbing polaroid listicle prism cloud bread migas flannel microdosing williamsburg.
+Gdb stack0 komutu ile gdb’nin içinde stack0 binary’sini açtım. b main komutu ile programın main foksiyonunda durmasını istedim. r komutu ile de programı çalıştırdım. 
 
-Echo park try-hard irony tbh vegan pok pok. Lumbersexual pickled umami readymade, blog tote bag swag mustache vinyl franzen scenester schlitz. Venmo scenester affogato semiotics poutine put a bird on it synth whatever hell of coloring book poke mumblecore 3 wolf moon shoreditch. Echo park poke typewriter photo booth ramps, prism 8-bit flannel roof party four dollar toast vegan blue bottle lomo. Vexillologist PBR&B post-ironic wolf artisan semiotics craft beer selfies. Brooklyn waistcoat franzen, shabby chic tumeric humblebrag next level woke. Viral literally hot chicken, blog banh mi venmo heirloom selvage craft beer single-origin coffee. Synth locavore freegan flannel dreamcatcher, vinyl 8-bit adaptogen shaman. Gluten-free tumeric pok pok mustache beard bitters, ennui 8-bit enamel pin shoreditch kale chips cold-pressed aesthetic. Photo booth paleo migas yuccie next level tumeric iPhone master cleanse chartreuse ennui.
+({{site.baseurl}}/assets/img/ss5.png)
+
+Disas main komutu ile main fonksiyonunun içeriğini ekrana bastırdım. Call 0x804830c instruction’ı gets ile kullanıcıdan input almamızı sağlıyor. Benim de büyük boyutta bir input vererek IDA’da gördüğümüz değişkenin üzerine yazmam gerekiyor. Bunun için pattern create 100 diyerek 100 karakterli bir input oluşturup bunu kopyalıyorum.
+
+({{site.baseurl}}/assets/img/ss6.png)
+
+Ardından ni komutunu kullanarak call gets@plt’ye kadar geliyorum ve kopyaladığım input’u veriyorum. Yine ni komutuyla test eax, eax instruction’ına  geliyorum. Burada $eax’de qaaa değerinin olduğunu görüyorum.
+
+({{site.baseurl}}/assets/img/ss7.png)
+
+({{site.baseurl}}/assets/img/ss8.png)
+
+Bu değerin olması, bu değerden sonra değişkenin üzerine yazabileceğimiz anlamına geliyor. O yüzden kaçıncı karakterde bu değerin olduğunu bulmak için pattern search qaaa yazıyorum.
+
+Buradan 61. veya 64. karakterde değişkene yazabileceğimi görüyorum. İkisini de denediğimde doğru cevabın 64 olduğunu görüyorum. Ardından  “you have changed the 'modified' variable” stringinin atandığı yeri bulmam gerekiyor. Instruction’ları incelediğimde 0x8048419’da atama işleminin yapıldığını görüyorum.
+
+({{site.baseurl}}/assets/img/ss10.png)
+
+Yani 64 tane junk data girip ardından  0x8048419 adresini vermem gerekiyor. 
+Daha sonra bu bilgiyle exploitimi yazıyorum.
+
+{% highlight python %}
+from pwn import *
+p=process("./stack0")
+payload = "A"*64 + p32(0x8048419) 
+p.sendline(payload)
+p.interactive()
+{% endhighlight %}
+
+Exploiti yazıp çalıştırdıktan sonra ise “you have changed the 'modified' variable” stringinin ekrana basıldığını görüyorum. Böylece amacıma ulaşmış oluyorum.
+
+({{site.baseurl}}/assets/img/ss9.png)
+
