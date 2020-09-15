@@ -5,7 +5,7 @@ date: 2020-09-15 11:37:20 +0300
 description: You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. # Add post description (optional)
 img: protostar-stack-0.png # Add image post (optional)
 fig-caption: # Add figcaption (optional)
-tags: [Holidays, Hawaii]
+tags: [Exploit,Writeup]
 ---
 Merhaba, ilk yazımda Protostar makinesinde yer alan Stack0 binary’si için writeup yazmaya karar verdim. Protostar makinesini kurduktan sonra user: root ve password: godmode bilgileriyle giriş yapıp /opt/protostar/bin klasöründen binary’lere ulaşabilirsiniz. Stack0 binary’sini indirdikten sonra ilk olarak binary’i çalıştırıp çıktısına baktım.
 
